@@ -12,7 +12,7 @@ const NavIcons: React.FC = () => {
     const isLoggedIn = false;
     const handleProfile = () => {
         if (!isLoggedIn) {
-            router.push('/');
+            router.push('/');   
         }
         setIsPofileOpen((prev) => !prev);
     }
