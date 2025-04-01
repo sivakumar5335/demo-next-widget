@@ -26,8 +26,8 @@ const NavIcons: React.FC = () => {
                 </div>
             )}
             <Image src='/notification.jpg' alt='' width={22} height={22} className='cursor-pointer'></Image>
-            <div className='relative cursor-pointer'>
-                <Image src='/3081986.png' alt='' width={22} height={22} className='cursor-pointer' onClick={() => setIsCartOpen((prev) => !prev)}></Image>
+            <div className='relative cursor-pointer' onClick={() => setIsCartOpen((prev) => !prev)}>
+                <Image src='/3081986.png' alt='' width={22} height={22} className='cursor-pointer' ></Image>
                 <div className='absolute -top-4 -right-4 w-6 bg-[#F35C7A] rounded-full text-white text-sm flex items-center justify-center'>1</div>
             </div>
             {isCartOpen && (

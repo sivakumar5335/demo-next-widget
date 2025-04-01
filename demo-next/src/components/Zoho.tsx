@@ -11,37 +11,37 @@ declare global {
 export default function Zoho() {
   const [tasks, setTasks] = useState<string[]>([]);
 
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined' && window.ZOHO) {
-  //     window.ZOHO.CREATOR.init().then(() => {
-  //       const apiCredentials = {
-  //         appName: 'Widget',
-  //         reportName: 'All_Tasks'
-  //       };
-  //       window.ZOHO.CREATOR.API.getAllRecords(apiCredentials)
-  //         .then(function (response: { code: number; data: any[]; }) {
-  //           if (response && response.code === 3000 && response.data.length > 0) {
-  //             const tasks = response.data.map((item) => item.Task);
-  //             setTasks(tasks);
-  //             console.log('response', response);
-  //           } else {
-  //             console.error('Failed to retrieve tasks.');
-  //           }
-  //         })
-  //         .catch(function (error: any) {
-  //           console.error('Error fetching tasks:', error);
-  //         });
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.ZOHO) {
+      window.ZOHO.CREATOR.init().then(() => {
+        const apiCredentials = {
+          appName: 'next-shop',
+          reportName: 'All_Products'
+        };
+        window.ZOHO.CREATOR.API.getAllRecords(apiCredentials)
+          .then(function (response: { code: number; data: any[]; }) {
+            if (response && response.code === 3000 && response.data.length > 0) {
+              const tasks = response.data.map((item) => item.Task);
+              setTasks(tasks);
+              console.log('response', response);
+            } else {
+              console.error('Failed to retrieve tasks.');
+            }
+          })
+          .catch(function (error: any) {
+            console.error('Error fetching tasks:', error);
+          });
 
-  //       console.log('Zoho SDK Initialized');
-  //     });
-  //   } else {
-  //     console.error('Zoho SDK not loaded.');
-  //   }
-  // }, []);
+        console.log('Zoho SDK Initialized');
+      });
+    } else {
+      console.error('Zoho SDK not loaded.');
+    }
+  }, []);
 
   return (
     <>
-      {/* <Script
+      <Script
         src="https://js.zohostatic.com/creator/widgets/version/1.0/widgetsdk-min.js"
         strategy="beforeInteractive"
       />
@@ -52,7 +52,7 @@ export default function Zoho() {
             <li key={index}>{task}</li>
           ))}
         </ul>
-      </div> */}
+      </div>
     </>
   );
 }
